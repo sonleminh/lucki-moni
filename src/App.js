@@ -1,13 +1,19 @@
 import './App.css';
 import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogOverlay,
   Box,
   Button,
   Container,
   Grid,
   GridItem,
   Image,
+  Text,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Fireworks } from '@fireworks-js/react';
 function App() {
   const [isShow, setIsShow] = useState(false);
@@ -25,17 +31,20 @@ function App() {
   };
 
   const handleShow1 = () => {
-    setIsShow1(!isShow1);
+    setIsShow1(true);
   };
   const handleShow2 = () => {
-    setIsShow2(!isShow2);
+    setIsShow2(true);
   };
   const handleShow3 = () => {
-    setIsShow3(!isShow3);
+    setIsShow3(true);
   };
   const handleShow4 = () => {
-    setIsShow4(!isShow4);
+    setIsShow4(true);
   };
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = useRef();
   return (
     <div className='App'>
       <Box
@@ -75,19 +84,22 @@ function App() {
                 position: 'fixed',
               }}
             />
-            <Image src='loichuc.png'></Image>
-            <Button
-              position={'absolute'}
-              right='10px'
-              top={'0'}
-              p='10px 20px'
-              borderRadius={'8px'}
-              bg='#ee1925'
-              color={'#ffffb8'}
-              border='1px solid #fcbb57'
-              onClick={handleCloseBtn}>
-              X
-            </Button>
+            <Box position='relative'>
+              <Image src='loichuc.png'></Image>
+              <Button
+                position={'absolute'}
+                right='0'
+                top={'0'}
+                p='10px 20px'
+                borderRadius={'8px'}
+                bgImage='mememthi.png'
+                bgSize={'cover'}
+                color={'#ffffb8'}
+                border='1px solid #fcbb57'
+                onClick={handleCloseBtn}>
+                X
+              </Button>
+            </Box>
           </Box>
         ) : (
           <></>
@@ -118,12 +130,14 @@ function App() {
               {isShow1 ? (
                 <Box>
                   <Box
+                    w='100%'
                     position={'fixed'}
                     top='30%'
-                    left='20px'
+                    left='0'
                     border='1px solid #ecc062'>
                     <Image
-                      boxSize={'350px'}
+                      position={'relative'}
+                      boxSize={'100%'}
                       src='lixi1.png'
                       objectFit={'cover'}
                     />
@@ -133,15 +147,28 @@ function App() {
                       top={'0'}
                       p='10px 20px'
                       borderRadius={'8px'}
-                      bg='#ee1925'
+                      bgImage='mememthi.png'
+                      bgSize={'cover'}
                       color={'#ffffb8'}
-                      onClick={handleCloseBtn}>
+                      onClick={onOpen}
+                      zIndex='100'>
                       X
                     </Button>
-                    <div className='pyro'>
-                      <div className='before'></div>
-                      <div className='after'></div>
-                    </div>
+                    <Fireworks
+                      options={{
+                        rocketsPoint: {
+                          min: 0,
+                          max: 100,
+                        },
+                      }}
+                      style={{
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        position: 'fixed',
+                      }}
+                    />
                   </Box>
                 </Box>
               ) : (
@@ -162,13 +189,13 @@ function App() {
               {isShow2 ? (
                 <Box>
                   <Box
+                    w='100%'
                     position={'fixed'}
                     top='30%'
-                    left='20px'
-                    h='100vh'
+                    left='0'
                     border='1px solid #ecc062'>
                     <Image
-                      boxSize={'350px'}
+                      boxSize={'100%'}
                       src='lixi2.png'
                       objectFit={'cover'}
                       zIndex='2'
@@ -179,10 +206,12 @@ function App() {
                       top={'0'}
                       p='10px 20px'
                       borderRadius={'8px'}
-                      bg='#ee1925'
+                      bgImage='mememthi.png'
+                      bgSize={'cover'}
                       color={'#ffffb8'}
                       border='1px solid #fcbb57'
-                      onClick={handleCloseBtn}>
+                      onClick={onOpen}
+                      zIndex='100'>
                       X
                     </Button>
                     <Fireworks
@@ -220,13 +249,13 @@ function App() {
               {isShow3 ? (
                 <Box>
                   <Box
+                    w='100%'
                     position={'fixed'}
                     top='30%'
-                    left='20px'
-                    h='100vh'
+                    left='0'
                     border='1px solid #ecc062'>
                     <Image
-                      boxSize={'350px'}
+                      boxSize={'100%'}
                       src='lixi3.png'
                       objectFit={'cover'}
                       zIndex='2'
@@ -237,12 +266,29 @@ function App() {
                       top={'0'}
                       p='10px 20px'
                       borderRadius={'8px'}
-                      bg='#ee1925'
+                      bgImage='mememthi.png'
+                      bgSize={'cover'}
                       color={'#ffffb8'}
                       border='1px solid #fcbb57'
-                      onClick={handleCloseBtn}>
+                      onClick={onOpen}
+                      zIndex='100'>
                       X
                     </Button>
+                    <Fireworks
+                      options={{
+                        rocketsPoint: {
+                          min: 0,
+                          max: 100,
+                        },
+                      }}
+                      style={{
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        position: 'fixed',
+                      }}
+                    />
                   </Box>
                 </Box>
               ) : (
@@ -263,13 +309,13 @@ function App() {
               {isShow4 ? (
                 <Box>
                   <Box
+                    w='100%'
                     position={'fixed'}
                     top='30%'
-                    left='20px'
-                    h='100vh'
+                    left='0'
                     border='1px solid #ecc062'>
                     <Image
-                      boxSize={'350px'}
+                      boxSize={'100%'}
                       src='lixi4.png'
                       objectFit={'cover'}
                     />
@@ -279,12 +325,29 @@ function App() {
                       top={'0'}
                       p='10px 20px'
                       borderRadius={'8px'}
-                      bg='#ee1925'
+                      bgImage='mememthi.png'
+                      bgSize={'cover'}
                       color={'#ffffb8'}
                       border='1px solid #fcbb57'
-                      onClick={handleCloseBtn}>
+                      onClick={onOpen}
+                      zIndex='100'>
                       X
                     </Button>
+                    <Fireworks
+                      options={{
+                        rocketsPoint: {
+                          min: 0,
+                          max: 100,
+                        },
+                      }}
+                      style={{
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        position: 'fixed',
+                      }}
+                    />
                   </Box>
                 </Box>
               ) : (
@@ -292,6 +355,48 @@ function App() {
               )}
             </GridItem>
           </Grid>
+          <AlertDialog
+            isOpen={isOpen}
+            leastDestructiveRef={cancelRef}
+            onClose={onClose}>
+            <AlertDialogOverlay>
+              <AlertDialogContent>
+                <AlertDialogBody
+                  w='100%'
+                  h='300px'
+                  position='fixed'
+                  top='100px'>
+                  <Button
+                    ref={cancelRef}
+                    onClick={onClose}
+                    p='10px 20px'
+                    position='absolute'
+                    right='0'
+                    // bg='#ee1925'
+                    bgImage='mememthi.png'
+                    bgSize={'cover'}
+                    color={'#ffffb8'}
+                    border='1px solid #fcbb57'
+                    fontSize={'30px'}>
+                    X
+                  </Button>
+                  <Image src='mememe.png' />
+                  <Text
+                    m='0 20px'
+                    position='absolute'
+                    top='350px'
+                    color='white'
+                    textShadow={
+                      ' -1px 0 black, 0 1px black,      1px 0 black, 0 -1px black'
+                    }
+                    fontSize={'24px'}>
+                    Ai cho mở tiếp. Chụp màn hình lại gửi qua để được nhận tiền
+                    lì lì ♥
+                  </Text>
+                </AlertDialogBody>
+              </AlertDialogContent>
+            </AlertDialogOverlay>
+          </AlertDialog>
         </Container>
       </Box>
     </div>
