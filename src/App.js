@@ -81,7 +81,8 @@ function App() {
                 bgSize={'cover'}
                 color={'#ffffb8'}
                 border='1px solid #fcbb57'
-                onClick={handleCloseBtn}>
+                onClick={handleCloseBtn}
+                zIndex='101'>
                 X
               </Button>
               <Fireworks
