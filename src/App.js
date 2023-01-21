@@ -8,6 +8,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import { useState } from 'react';
+import { Fireworks } from '@fireworks-js/react';
 function App() {
   const [isShow, setIsShow] = useState(false);
   const [isShow1, setIsShow1] = useState(false);
@@ -24,31 +25,17 @@ function App() {
   };
 
   const handleShow1 = () => {
-    setIsShow1(true);
-    console.log('c');
-  };
-  const handleCloseBtn1 = () => {
-    setIsShow1(false);
+    setIsShow1(!isShow1);
   };
   const handleShow2 = () => {
-    setIsShow2(true);
-  };
-  const handleCloseBtn2 = () => {
-    setIsShow2(false);
+    setIsShow2(!isShow2);
   };
   const handleShow3 = () => {
-    setIsShow3(true);
-  };
-  const handleCloseBtn3 = () => {
-    setIsShow3(false);
+    setIsShow3(!isShow3);
   };
   const handleShow4 = () => {
-    setIsShow4(true);
+    setIsShow4(!isShow4);
   };
-  const handleCloseBtn4 = () => {
-    setIsShow4(false);
-  };
-
   return (
     <div className='App'>
       <Box
@@ -72,12 +59,27 @@ function App() {
           Nhận lời chúc từ Son Le
         </Button>
         {isShow ? (
-          <Box position={'fixed'} mt='50px'>
+          <Box position={'fixed'} w='100%' mt='50px'>
+            <Fireworks
+              options={{
+                rocketsPoint: {
+                  min: 0,
+                  max: 100,
+                },
+              }}
+              style={{
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                position: 'fixed',
+              }}
+            />
             <Image src='loichuc.png'></Image>
             <Button
               position={'absolute'}
-              right='20px'
-              top={'100px'}
+              right='10px'
+              top={'0'}
               p='10px 20px'
               borderRadius={'8px'}
               bg='#ee1925'
@@ -86,10 +88,6 @@ function App() {
               onClick={handleCloseBtn}>
               X
             </Button>
-            <div className='pyro'>
-              <div className='before'></div>
-              <div className='after'></div>
-            </div>
           </Box>
         ) : (
           <></>
@@ -119,12 +117,27 @@ function App() {
               />
               {isShow1 ? (
                 <Box>
-                  <Box position={'fixed'} top='30%' left='20px'>
+                  <Box
+                    position={'fixed'}
+                    top='30%'
+                    left='20px'
+                    border='1px solid #ecc062'>
                     <Image
                       boxSize={'350px'}
                       src='lixi1.png'
                       objectFit={'cover'}
                     />
+                    <Button
+                      position={'absolute'}
+                      right='0'
+                      top={'0'}
+                      p='10px 20px'
+                      borderRadius={'8px'}
+                      bg='#ee1925'
+                      color={'#ffffb8'}
+                      onClick={handleCloseBtn}>
+                      X
+                    </Button>
                     <div className='pyro'>
                       <div className='before'></div>
                       <div className='after'></div>
@@ -148,17 +161,45 @@ function App() {
               />
               {isShow2 ? (
                 <Box>
-                  <Box position={'fixed'} top='30%' left='20px' h='100vh'>
+                  <Box
+                    position={'fixed'}
+                    top='30%'
+                    left='20px'
+                    h='100vh'
+                    border='1px solid #ecc062'>
                     <Image
                       boxSize={'350px'}
-                      src='lixi1.png'
+                      src='lixi2.png'
                       objectFit={'cover'}
                       zIndex='2'
                     />
-                    <div className='pyro'>
-                      <div className='before'></div>
-                      <div className='after'></div>
-                    </div>
+                    <Button
+                      position={'absolute'}
+                      right='0'
+                      top={'0'}
+                      p='10px 20px'
+                      borderRadius={'8px'}
+                      bg='#ee1925'
+                      color={'#ffffb8'}
+                      border='1px solid #fcbb57'
+                      onClick={handleCloseBtn}>
+                      X
+                    </Button>
+                    <Fireworks
+                      options={{
+                        rocketsPoint: {
+                          min: 0,
+                          max: 100,
+                        },
+                      }}
+                      style={{
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        position: 'fixed',
+                      }}
+                    />
                   </Box>
                 </Box>
               ) : (
@@ -178,17 +219,30 @@ function App() {
               />
               {isShow3 ? (
                 <Box>
-                  <Box position={'fixed'} top='30%' left='20px' h='100vh'>
+                  <Box
+                    position={'fixed'}
+                    top='30%'
+                    left='20px'
+                    h='100vh'
+                    border='1px solid #ecc062'>
                     <Image
                       boxSize={'350px'}
-                      src='lixi1.png'
+                      src='lixi3.png'
                       objectFit={'cover'}
                       zIndex='2'
                     />
-                    <div className='pyro'>
-                      <div className='before'></div>
-                      <div className='after'></div>
-                    </div>
+                    <Button
+                      position={'absolute'}
+                      right='0'
+                      top={'0'}
+                      p='10px 20px'
+                      borderRadius={'8px'}
+                      bg='#ee1925'
+                      color={'#ffffb8'}
+                      border='1px solid #fcbb57'
+                      onClick={handleCloseBtn}>
+                      X
+                    </Button>
                   </Box>
                 </Box>
               ) : (
@@ -208,16 +262,29 @@ function App() {
               />
               {isShow4 ? (
                 <Box>
-                  <Box position={'fixed'} top='30%' left='20px' h='100vh'>
+                  <Box
+                    position={'fixed'}
+                    top='30%'
+                    left='20px'
+                    h='100vh'
+                    border='1px solid #ecc062'>
                     <Image
                       boxSize={'350px'}
-                      src='lixi1.png'
+                      src='lixi4.png'
                       objectFit={'cover'}
                     />
-                    <div className='pyro'>
-                      <div className='before'></div>
-                      <div className='after'></div>
-                    </div>
+                    <Button
+                      position={'absolute'}
+                      right='0'
+                      top={'0'}
+                      p='10px 20px'
+                      borderRadius={'8px'}
+                      bg='#ee1925'
+                      color={'#ffffb8'}
+                      border='1px solid #fcbb57'
+                      onClick={handleCloseBtn}>
+                      X
+                    </Button>
                   </Box>
                 </Box>
               ) : (
